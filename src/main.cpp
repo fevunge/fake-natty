@@ -10,8 +10,8 @@ int main() {
   crow::SimpleApp app;
 
   CROW_ROUTE(app, "/")([](){
-    auto page = crow::mustache::load_text("templates/page.html");
-    return page;
+    auto page = crow::mustache::load("static/index.html");
+    return page.render();
   });
 
   app.port(8080).multithreaded().run();
