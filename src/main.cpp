@@ -8,9 +8,13 @@
 
 int main() {
   crow::SimpleApp app;
+
   CROW_ROUTE(app, "/")([](){
-    return "fevunge";
+    auto page = crow::mustache::load("page.html");
+    return page;
   });
-  app.port(8080).multithreaded();
+
+  app.port(8080).multithreaded().run();
+
   return 0;
 }
